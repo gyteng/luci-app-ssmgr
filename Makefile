@@ -37,10 +37,15 @@ define Package/luci-app-ssmgr/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_DIR) $(1)/usr/share/autoGetAccount
 	
 	$(INSTALL_DATA) ./files/luci/model/cbi/ssmgr.lua $(1)/usr/lib/lua/luci/model/cbi/ssmgr.lua
 	$(INSTALL_DATA) ./files/luci/controller/ssmgr.lua $(1)/usr/lib/lua/luci/controller/ssmgr.lua
 	$(INSTALL_DATA) ./files/root/etc/config/ssmgr $(1)/etc/config/ssmgr
+	$(INSTALL_DATA) ./files/root/usr/share/autoGetAccount/cron.sh $(1)/usr/share/autoGetAccount/cron.sh
+	$(INSTALL_DATA) ./files/root/usr/share/autoGetAccount/JSON.sh $(1)/usr/share/autoGetAccount/JSON.sh
+	$(INSTALL_DATA) ./files/root/usr/share/autoGetAccount/start.sh $(1)/usr/share/autoGetAccount/start.sh
+	$(INSTALL_DATA) ./files/root/usr/share/autoGetAccount/website.txt $(1)/usr/share/autoGetAccount/website.txt
 endef
 
 $(eval $(call BuildPackage,luci-app-ssmgr))
