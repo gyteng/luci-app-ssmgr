@@ -1,0 +1,3 @@
+config ssmgr 'default'
+	option site 'https://wall.gyteng.com/'
+	option enable '1'
