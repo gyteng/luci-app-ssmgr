@@ -13,9 +13,12 @@ o = s:option(Flag, "enable", translate("Enable"))
 o.rmempty     = false
 
 o = s:option(Value, "site", translate("Site"))
-o.placeholder = "https://wall.gyteng.com/"
+o.placeholder = "website"
 o.default     = "https://wall.gyteng.com/"
 o.datatype    = "string"
+o.rmempty     = false
+
+o = s:option(Flag, "alloc", translate("Alloc by server"))
 o.rmempty     = false
 
 local apply = luci.http.formvalue("cbi.apply")
