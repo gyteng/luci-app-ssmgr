@@ -14,8 +14,7 @@ if [ ! -f $accountFile ]; then
 fi
 oldAccount=$(cat $accountFile)
 newAccount=$(curl -s ${ssmgrAddress}api/user/account/mac/${macAddress})
-if [ "$oldAccount" == "$newAccount" ]
-then
+if [ "$oldAccount" == "$newAccount" ]; then
   echo 'account not change'
 else
   echo $newAccount > $accountFile
@@ -29,7 +28,7 @@ else
   uci set shadowsocks-libev.@shadowsocks-libev[0].encrypt_method=${method//\"/}
   uci commit shadowsocks-libev
   stop=0
-  i=1
+  i=0
   uci del ssmgr.@ssmgr[0].server_list
   while [ $stop -eq 0 ]
   do

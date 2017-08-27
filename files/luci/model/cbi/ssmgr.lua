@@ -21,6 +21,15 @@ o.rmempty     = false
 o = s:option(Flag, "alloc", translate("Alloc by server"))
 o.rmempty     = false
 
+p = s:option(ListValue, "server", "Server")
+servers = uci.get("ssmgr", "default", "server_list")
+for i,v in pairs(servers) do
+	p:value(v, v)
+	luci.sys.exec("echo '"..v.."' > /tmp/test")
+end
+
+p:depends("alloc", "1")
+
 apply = luci.http.formvalue("cbi.apply")
 
 if apply then
