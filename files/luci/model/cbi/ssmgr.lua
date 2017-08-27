@@ -1,6 +1,6 @@
 local m, s, o
 
-if luci.sys.call("pidof ssmgr >/dev/null") == 0 then
+if luci.sys.call("pidof ssmgr > /dev/null") == 0 then
 	m = Map("ssmgr", translate("ssmgr"), "%s - %s" %{translate("ssmgr"), translate("RUNNING")})
 else
 	m = Map("ssmgr", translate("ssmgr"), "%s - %s" %{translate("ssmgr"), translate("NOT RUNNING")})
@@ -21,12 +21,13 @@ o.rmempty     = false
 o = s:option(Flag, "alloc", translate("Alloc by server"))
 o.rmempty     = false
 
-local apply = luci.http.formvalue("cbi.apply")
+apply = luci.http.formvalue("cbi.apply")
+
 if apply then
 	site = uci.get("ssmgr", "default", "site")
-	luci.sys.call("echo "..site.." > /usr/share/autoGetAccount/website.txt")
-	luci.sys.call("sh /usr/share/autoGetAccount/cron.sh")
-	luci.sys.call("sh /usr/share/autoGetAccount/start.sh")
+	luci.sys.exec("echo "..site.." > /usr/share/autoGetAccount/website.txt")
+	luci.sys.exec("sh /usr/share/autoGetAccount/cron.sh")
+	luci.sys.exec("sh /usr/share/autoGetAccount/start.sh")
 end
 
 return m
