@@ -28,11 +28,10 @@ o.readonly    = true
 o = s:option(Flag, "alloc", translate("Alloc by server"))
 o.rmempty     = false
 
-p = s:option(ListValue, "server", "Server")
+p = s:option(ListValue, "server", translate("Server"))
 servers = uci.get("ssmgr", "default", "server_list")
 for i,v in pairs(servers) do
 	p:value(v, v)
-	luci.sys.exec("echo '"..v.."' > /tmp/test")
 end
 
 p:depends("alloc", "1")

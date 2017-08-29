@@ -1,0 +1,14 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Site"
+msgstr "网站"
+
+msgid "MAC address"
+msgstr "MAC地址"
+
+msgid "Alloc by server"
+msgstr "由服务器分配"
+
+msgid "Server"
+msgstr "服务器"
