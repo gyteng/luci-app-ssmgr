@@ -36,7 +36,6 @@ apply = luci.http.formvalue("cbi.apply")
 
 if apply then
 	site = uci.get("ssmgr", "default", "site")
-	luci.sys.exec("echo "..site.." > /usr/share/autoGetAccount/website.txt")
 	luci.sys.exec("sh /usr/share/autoGetAccount/cron.sh")
 	luci.sys.exec("sh /usr/share/autoGetAccount/start.sh")
 end
