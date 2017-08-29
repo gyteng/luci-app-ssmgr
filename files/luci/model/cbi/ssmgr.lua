@@ -1,10 +1,6 @@
 local m, s, o
 
-if luci.sys.call("pidof ssmgr > /dev/null") == 0 then
-	m = Map("ssmgr", translate("ssmgr"), "%s - %s" %{translate("ssmgr"), translate("RUNNING")})
-else
-	m = Map("ssmgr", translate("ssmgr"), "%s - %s" %{translate("ssmgr"), translate("NOT RUNNING")})
-end
+m = Map("ssmgr", translate("ssmgr"))
 
 s = m:section(TypedSection, "ssmgr", translate("General Setting"))
 s.anonymous   = true
