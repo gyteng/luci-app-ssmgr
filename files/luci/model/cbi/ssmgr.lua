@@ -30,7 +30,7 @@ for i,v in pairs(servers) do
 	p:value(v, v)
 end
 
-p:depends("alloc", "1")
+p:depends("alloc", "0")
 
 apply = luci.http.formvalue("cbi.apply")
 

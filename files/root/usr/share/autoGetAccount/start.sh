@@ -30,7 +30,7 @@ do
 done
 uci commit ssmgr
 alloc=$(uci get ssmgr.@ssmgr[0].alloc)
-if [ $alloc -eq 1 ]; then
+if [ $alloc -eq 0 ]; then
   newAddress=$(uci get ssmgr.@ssmgr[0].server | awk '{print $2}' -F '|')
 else
   newAddress=$(cat ${accountFile} | ./JSON.sh -l | egrep '\["default","address"\]' | awk '{print $2}' | sed 's/\"//g')
@@ -52,6 +52,14 @@ echo $newValue
 
 if [ "$oldValue" == "$newValue" ]; then
   echo 'account not change'
+elif [ ${#newAddress} -lt 1 ]; then
+  echo 'invalid address'
+elif [ ${#newPort} -lt 1 ]; then
+  echo 'invalid port'
+elif [ ${#newPassword} -lt 1 ]; then
+  echo 'invalid password'
+elif [ ${#newMethod} -lt 1 ]; then
+  echo 'invalid method'
 else
   uci set shadowsocks-libev.@shadowsocks-libev[0].server=${newAddress}
   uci set shadowsocks-libev.@shadowsocks-libev[0].server_port=${newPort}
