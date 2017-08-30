@@ -29,8 +29,8 @@ do
   fi
 done
 uci commit ssmgr
-alloc=$(uci get ssmgr.@ssmgr[0].alloc)
-if [ $alloc -eq 0 ]; then
+custom_server=$(uci get ssmgr.@ssmgr[0].custom_server)
+if [ $custom_server -eq 0 ]; then
   newAddress=$(uci get ssmgr.@ssmgr[0].server | awk '{print $2}' -F '|')
 else
   newAddress=$(cat ${accountFile} | ./JSON.sh -l | egrep '\["default","address"\]' | awk '{print $2}' | sed 's/\"//g')

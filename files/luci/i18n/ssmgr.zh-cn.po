@@ -7,8 +7,8 @@ msgstr "网站"
 msgid "MAC address"
 msgstr "MAC地址"
 
-msgid "Alloc by server"
-msgstr "由服务器分配"
+msgid "Custom server"
+msgstr "自定义服务器"
 
 msgid "Server"
 msgstr "服务器"

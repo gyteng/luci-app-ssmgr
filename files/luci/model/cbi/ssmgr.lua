@@ -21,7 +21,7 @@ o.datatype    = "string"
 o.rmempty     = false
 o.readonly    = true
 
-o = s:option(Flag, "alloc", translate("Alloc by server"))
+o = s:option(Flag, "custom_server", translate("Custom server"))
 o.rmempty     = false
 
 p = s:option(ListValue, "server", translate("Server"))
@@ -30,7 +30,7 @@ for i,v in pairs(servers) do
 	p:value(v, v)
 end
 
-p:depends("alloc", "0")
+p:depends("custom_server", "1")
 
 apply = luci.http.formvalue("cbi.apply")
 
