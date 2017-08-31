@@ -26,8 +26,10 @@ o.rmempty     = false
 
 p = s:option(ListValue, "server", translate("Server"))
 servers = uci.get("ssmgr", "default", "server_list")
-for i,v in pairs(servers) do
-	p:value(v, v)
+if (servers ~= nil) then
+  for i,v in pairs(servers) do
+		p:value(v, v)
+	end
 end
 
 p:depends("custom_server", "1")
@@ -36,7 +38,7 @@ apply = luci.http.formvalue("cbi.apply")
 
 if apply then
 	luci.sys.exec("sh /usr/share/ssmgr/cron.sh")
-	luci.sys.exec("sh /usr/share/ssmgr/start.sh")
+	luci.sys.exec("sh /usr/share/ssmgr/apply.sh")
 end
 
 return m

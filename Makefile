@@ -48,6 +48,7 @@ define Package/luci-app-ssmgr/install
 	$(INSTALL_BIN) ./files/root/usr/share/ssmgr/cron.sh $(1)/usr/share/ssmgr/cron.sh
 	$(INSTALL_BIN) ./files/root/usr/share/ssmgr/JSON.sh $(1)/usr/share/ssmgr/JSON.sh
 	$(INSTALL_BIN) ./files/root/usr/share/ssmgr/start.sh $(1)/usr/share/ssmgr/start.sh
+	$(INSTALL_BIN) ./files/root/usr/share/ssmgr/apply.sh $(1)/usr/share/ssmgr/apply.sh
 	$(INSTALL_BIN) ./files/root/usr/share/ssmgr/getAccount.sh $(1)/usr/share/ssmgr/getAccount.sh
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ssmgr.*.lmo $(1)/usr/lib/lua/luci/i18n/
 endef
