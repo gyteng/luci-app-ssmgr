@@ -35,8 +35,8 @@ p:depends("custom_server", "1")
 apply = luci.http.formvalue("cbi.apply")
 
 if apply then
-	luci.sys.exec("sh /usr/share/autoGetAccount/cron.sh")
-	luci.sys.exec("sh /usr/share/autoGetAccount/start.sh")
+	luci.sys.exec("sh /usr/share/ssmgr/cron.sh")
+	luci.sys.exec("sh /usr/share/ssmgr/start.sh")
 end
 
 return m
