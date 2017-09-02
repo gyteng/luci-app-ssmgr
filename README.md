@@ -25,8 +25,7 @@ make package/luci-app-ssmgr/compile V=99
 
 1. 在 `shadowsocks-manager` 里启动 macAccount 插件，详情请参考项目文档。
 
-2. 给相应的用户添加账号，类型选“MAC地址”，并选择对应的端口和地址。
+2. 给相应的用户添加账号，类型选“MAC地址”，并选择对应的端口和地址。  
+  ![screenshot1](https://github.com/gyteng/luci-app-ssmgr/raw/master/screenshots/screenshot1.png)
 
-![screenshot1](https://github.com/gyteng/luci-app-ssmgr/raw/master/screenshots/screenshot1.png)
-
-3. 在路由器上启用该插件。
+3. 在路由器上启用该插件，当没有勾选“自定义服务器”时，会使用服务端指定的服务器，勾选后则手工指定用哪个服务器。
