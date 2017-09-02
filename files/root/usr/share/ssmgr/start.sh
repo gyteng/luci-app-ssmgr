@@ -1,4 +1,4 @@
-cd /usr/share/autoGetAccount
+cd /usr/share/ssmgr
 
 isEnable=`uci get ssmgr.@ssmgr[0].enable`
 if [ "$isEnable" == "0" ]; then
@@ -32,6 +32,10 @@ uci commit ssmgr
 custom_server=$(uci get ssmgr.@ssmgr[0].custom_server)
 if [ $custom_server -eq 1 ]; then
   newAddress=$(uci get ssmgr.@ssmgr[0].server | awk '{print $2}' -F '|')
+  if [ ${#newAddress} -lt 1 ]; then
+    newAddress=$(cat ${accountFile} | ./JSON.sh -l | egrep '\["default","address"\]' | awk '{print $2}' | sed 's/\"//g')
+    uci set ssmgr.@ssmgr[0].server=${newAddress}
+  fi
 else
   newAddress=$(cat ${accountFile} | ./JSON.sh -l | egrep '\["default","address"\]' | awk '{print $2}' | sed 's/\"//g')
 fi
@@ -46,9 +50,6 @@ oldMethod=$(uci get shadowsocks-libev.@shadowsocks-libev[0].encrypt_method)
 
 oldValue=${oldAddress}${oldPort}${oldPassword}${oldMethod}
 newValue=${newAddress}${newPort}${newPassword}${newMethod}
-
-echo $oldValue
-echo $newValue
 
 if [ "$oldValue" == "$newValue" ]; then
   echo 'account not change'
